@@ -59,7 +59,7 @@ def home(date):
         st.markdown('***')
         sql_ope_room = "SELECT operation_room_num, operation_room_name FROM ope_room;"
         ope_room_info = inquire_mysql(sql_ope_room, output_format='DataFrame')
-        print(ope_room_info)
+        # print(ope_room_info)
         options = ope_room_info['operation_room_name'].tolist()
         options = sorted(options,key = lambda i:int(re.match(r'(\d+)',i).group()))
         selected_option = st.selectbox("手术室", options)
