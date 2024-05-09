@@ -257,7 +257,6 @@ rfc3339-validator==0.1.4
 rfc3986-validator==0.1.1
 rich==13.7.1
 rope==1.7.0
-rpy2==3.5.14
 Rtree==1.0.1
 s3fs==2023.4.0
 safetensors==0.3.2
