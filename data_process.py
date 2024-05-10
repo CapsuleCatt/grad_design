@@ -98,7 +98,7 @@ def get_data_for_ct(data):
     y_ct = y_ct.astype(float)
     x_data_ct = data_ct.drop(['SYXH', '进出CT室时长（分）'], axis=1)
     x_data_ct[['性别', '过敏史', '心律', '诊断代码', '主刀医生工号', 'sq手术等级', 'sq麻醉方式', 'sq手术部位', 'operation_num', 'CT', 'operation_room_num']]= x_data_ct[['性别', '过敏史', '心律', '诊断代码', '主刀医生工号', 'sq手术等级', 'sq麻醉方式', 'sq手术部位', 'operation_num', 'CT', 'operation_room_num']].astype(str)
-    x_data_ct[['进出手术机房时长（分）', '进出手术室时长（分）', 's进出苏醒室时长（分）']] = x_data_ct[['进出手术机房时长（分）', '进出手术室时长（分）', 's进出苏醒室时长（分）']].astype(float)
+    x_data_ct = x_data_ct.drop[['进出手术机房时长（分）', '进出手术室时长（分）', 's进出苏醒室时长（分）']]
     x_data_ct_dummies = pd.get_dummies(x_data_ct)
     return x_data_ct_dummies, y_ct
 
@@ -116,13 +116,12 @@ def get_data_for_not_ct(data):
     y_operation_room = y_operation_room.astype(float)
     y_operation = y_operation.astype(float)
     y_recovery = y_recovery.astype(float)
-    x_data = data
-    x_data.index = data['SYXH'] 
+    x_data = data.drop(['SYXH'], axis=1)
     x_data[['性别', '过敏史', '心律', '诊断代码', '主刀医生工号', 'sq手术等级', 'sq麻醉方式', 'sq手术部位', 'operation_num', 'CT', 'operation_room_num']]= x_data[['性别', '过敏史', '心律', '诊断代码', '主刀医生工号', 'sq手术等级', 'sq麻醉方式', 'sq手术部位', 'operation_num', 'CT', 'operation_room_num']].astype(str)
     x_data[['进出手术机房时长（分）', '进出手术室时长（分）', 's进出苏醒室时长（分）']] = x_data[['进出手术机房时长（分）', '进出手术室时长（分）', 's进出苏醒室时长（分）']].astype(float)
-    x_data_operation_room = x_data.drop(['进出手术机房时长（分）'], axis=1)
+    x_data_operation_room = x_data.drop(['进出手术机房时长（分）', 's进出苏醒室时长（分）','进出手术室时长（分）'], axis=1)
     x_data_operation = x_data.drop(['进出手术室时长（分）'], axis=1)
-    x_data_recovery = x_data.drop(['s进出苏醒室时长（分）'], axis=1)
+    x_data_recovery = x_data.drop(['s进出苏醒室时长（分）','进出手术室时长（分）'], axis=1)
     print(x_data_operation)
     x_data_operation_room_dummies = pd.get_dummies(x_data_operation_room)
     x_data_operation_dummies = pd.get_dummies(x_data_operation)

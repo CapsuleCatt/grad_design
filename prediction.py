@@ -37,10 +37,10 @@ def get_data():
     # data_all = pd.concat([data_ct, data_not_ct])
     x_data_operation_room_dummies, y_operation_room, x_data_operation_dummies, y_operation, x_data_recovery_dummies, y_recovery = data_process.get_data_for_not_ct(data_not_ct)
     x_data_ct_dummies, y_ct = data_process.get_data_for_ct(data_ct)
-    x_data_ct_dummies_i = x_data_ct_dummies[['进出手术室时长（分）', 's进出苏醒室时长（分）', '主刀医生工号_51', '主刀医生工号_65',]]
-    x_data_operation_room_dummies_i = x_data_operation_room_dummies[['进出手术室时长（分）', 's进出苏醒室时长（分）', '主刀医生工号_51', 'sq手术等级_-1', 'sq手术部位_1', 'operation_room_num_18']]
-    x_data_operation_dummies_i = x_data_operation_dummies[['进出手术机房时长（分）', 's进出苏醒室时长（分）', '主刀医生工号_11', '主刀医生工号_36', 'operation_num_14', 'operation_num_9']]
-    x_data_recovery_dummies_i = x_data_recovery_dummies[['进出手术机房时长（分）', '进出手术室时长（分）', '主刀医生工号_11', '主刀医生工号_36']]
+    x_data_ct_dummies_i = x_data_ct_dummies[['主刀医生工号_51', 'operation_room_num_12', '主刀医生工号_11', '主刀医生工号_0','operation_num_11','sq手术等级_-1','主刀医生工号_65','operation_room_num_1']]
+    x_data_operation_room_dummies_i = x_data_operation_room_dummies[['operation_num_24', 'operation_num_21', 'operation_num_0', '诊断代码_42', 'operation_room_num_20', 'operation_num_14', 'operation_num_9', 'operation_num_44', 'operation_room_num_18', '诊断代码_43']]
+    x_data_operation_dummies_i = x_data_operation_dummies[['进出手术机房时长（分）', 's进出苏醒室时长（分）']]
+    x_data_recovery_dummies_i = x_data_recovery_dummies[['进出手术机房时长（分）']]
     return x_data_operation_room_dummies_i, y_operation_room, x_data_operation_dummies_i, y_operation, x_data_recovery_dummies_i, y_recovery, x_data_ct_dummies_i, y_ct
 
 def predict_ct_gs(x_data_ct_dummies, y_ct):
