@@ -26,6 +26,9 @@ def home(date):
         # st.write('当前日期：',date_show)
         sql_all_ope_date = "SELECT operation_date FROM anesthesia_form;"
         ope_date_all = inquire_mysql(sql_all_ope_date, output_format='DataFrame')
+        if type(ope_date_all) == str:
+            # try again
+            ope_date_all = inquire_mysql(sql_all_ope_date, output_format='DataFrame')
         ope_date_list_all = list(set(ope_date_all['operation_date'].to_list()))
         options_date = sorted(ope_date_list_all,key = lambda i:i.date())
         options_date = [i.strftime("%Y-%m-%d") for i in options_date]
