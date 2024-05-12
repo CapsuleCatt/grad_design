@@ -18,7 +18,8 @@ def get_info(username):
             user_info = json.loads ( inquire_mysql ( sql_query ) ) [ 0 ]
             print(user_info)
             return user_info
-        except:
+        except Exception as e:
+            print(e)
             st.warning('账号或者密码错误')
     else:
         return None
