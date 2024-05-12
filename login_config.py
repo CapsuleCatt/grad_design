@@ -53,6 +53,7 @@ def login_in():
                     sql = f"SELECT * FROM users WHERE name = '{user_id}'"
                     # user_name = json.loads(inquire_mysql(sql))[0]['name']
                     real_password = user_info [ 'password' ]
+                    print(real_password)
                     # user_info['user_name'] = user_name
                     if submitted is True and password == real_password:
                         st.session_state [ 'user_info' ] = user_info
