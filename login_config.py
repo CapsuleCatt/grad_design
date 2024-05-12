@@ -54,18 +54,19 @@ def login_in():
                     # user_name = json.loads(inquire_mysql(sql))[0]['name']
                     real_password = user_info [ 'password' ]
                     # user_info['user_name'] = user_name
+                    if submitted is True and password == real_password:
+                        st.session_state [ 'user_info' ] = user_info
+                        empty.empty ()
+                        return True
+                    elif submitted is True and password != real_password:
+                        st.error ( "账号或密码错误" )
+                        return False
 
                 except:
                     # print('账号或密码错误')
                     pass
 
-                if submitted is True and password == real_password:
-                    st.session_state [ 'user_info' ] = user_info
-                    empty.empty ()
-                    return True
-                elif submitted is True and password != real_password:
-                    st.error ( "账号或密码错误" )
-                    return False
+
 
 
 def login_out():
