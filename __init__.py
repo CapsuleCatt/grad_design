@@ -25,7 +25,8 @@ def get_date():
     ope_date_all = inquire_mysql(sql_ope_date_all, output_format='DataFrame')
     # ope_date_all = json.loads(ope_date_all)
     # ope_date_all = pd.DataFrame(ope_date_all)
-    print(ope_date_all)
+    if type(ope_date_all) == str:
+        ope_date_all = inquire_mysql(sql_ope_date_all, output_format='DataFrame')
     ope_date_list_all = ope_date_all['operation_date'].to_list()
     # print(ope_date_list_all)
     ope_date_list_all = sorted(ope_date_list_all,key = lambda i:i.date())
